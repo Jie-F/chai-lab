@@ -80,7 +80,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 COPY . /app
 WORKDIR /app
 # Set PYTHONPATH to include /app, preserving any existing value if present
-ENV PYTHONPATH="/app:${PYTHONPATH}"
+#ENV PYTHONPATH="/app:${PYTHONPATH}"
+# The PYTHONPATH is unset in the environment, so just do this
+ENV PYTHONPATH=/app
 
 # --- DOWNLOAD AND BAKE IN MODEL FILES ---
 RUN mkdir -p downloads/esm downloads/models_v2 \
